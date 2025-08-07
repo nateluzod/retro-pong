@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>80s Retro Pong</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e0033, #110025);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Orbitron', monospace;
+            overflow: hidden;
+        }
+        
+        .game-container {
+            position: relative;
+            box-shadow: 0 0 50px #ff00ff, 0 0 100px #00ffff;
+            border: 3px solid #ff00ff;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { box-shadow: 0 0 30px #ff00ff, 0 0 60px #00ffff; }
+            to { box-shadow: 0 0 50px #ff00ff, 0 0 100px #00ffff; }
+        }
+        
+        canvas {
+            display: block;
+            background: #0a0014;
+        }
+        
+        .score {
+            position: absolute;
+            top: 20px;
+            color: #00ffff;
+            font-size: 48px;
+            text-shadow: 0 0 20px #00ffff;
+            font-weight: 700;
+        }
+        
+        .score-left {
+            left: 25%;
+        }
+        
+        .score-right {
+            right: 25%;
+        }
+        
+        .controls {
+            position: absolute;
+            bottom: -60px;
+            width: 100%;
+            text-align: center;
+            color: #ff00ff;
+            font-size: 14px;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+        
+        .title {
+            position: absolute;
+            top: -60px;
+            width: 100%;
+            text-align: center;
+            color: #00ff00;
+            font-size: 36px;
+            text-shadow: 0 0 30px #00ff00;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .game-over {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffff00;
+            font-size: 48px;
+            text-shadow: 0 0 30px #ffff00;
+            display: none;
+            animation: blink 0.5s ease-in-out infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .start-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00ff00;
+            font-size: 24px;
+            text-shadow: 0 0 20px #00ff00;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="title">RETRO PONG</div>
+        <div class="score score-left">
+            <span id="scoreLeft">0</span>
+            <div style="font-size: 14px; margin-top: -10px;">YOU</div>
+        </div>
+        <div class="score score-right">
+            <span id="scoreRight">0</span>
+            <div style="font-size: 14px; margin-top: -10px;" id="rightPlayerLabel">CPU</div>
+        </div>
+        <canvas id="gameCanvas" width="800" height="400"></canvas>
+        <div class="controls">Player: W/S | SPACE: Start/Pause | P: Toggle 1P/2P | Difficulty: 1=Easy 2=Medium 3=Hard</div>
+        <div class="game-over" id="gameOver">GAME OVER</div>
+        <div class="start-message" id="startMessage">MEDIUM Mode - Press SPACE to Start</div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
