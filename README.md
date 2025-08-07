@@ -1,5 +1,7 @@
 # 80s Retro Pong
 
+![Screenshot of 80s Retro Pong Game](screenshot.png)
+
 A nostalgic, neon-styled Pong game with dynamic music, particle effects, and adaptive paddle mechanics. Built with vanilla JavaScript and HTML5 Canvas.
 
 ## Features
